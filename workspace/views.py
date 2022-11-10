@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from workspace.forms import DishForm, CookCreationForm
+from workspace.forms import DishForm, CookCreationForm, CookExperienceUpdateForm
 from workspace.models import Dish, DishType, Ingredient
 
 
@@ -58,6 +58,7 @@ class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
 class DishListView(LoginRequiredMixin, generic.ListView):
     model = Dish
     queryset = Dish.objects.all().select_related("dish_types")
+    paginate_by = 10
 
 
 class DishDetailView(LoginRequiredMixin, generic.DetailView):
@@ -85,6 +86,7 @@ class IngredientListView(LoginRequiredMixin, generic.ListView):
     model = Ingredient
     context_object_name = "ingredient_list"
     template_name = "workspace/ingredient_list.html"
+    paginate_by = 10
 
 
 class IngredientCreateView(LoginRequiredMixin, generic.CreateView):
@@ -106,6 +108,7 @@ class IngredientDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class CookListView(LoginRequiredMixin, generic.ListView):
     model = get_user_model()
+    paginate_by = 5
 
 
 class CookDetailView(LoginRequiredMixin, generic.DetailView):
@@ -120,7 +123,7 @@ class CookCreateView(LoginRequiredMixin, generic.CreateView):
 
 class CookUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = get_user_model()
-    form_class = CookCreationForm
+    form_class = CookExperienceUpdateForm
     success_url = reverse_lazy("workspace:cook-list")
 
 
