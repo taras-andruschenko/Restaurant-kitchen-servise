@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Username: {{ cook.username }}
+  </h1>
+
+  <p><strong>First name:</strong> {{ cook.first_name }}</p>
+  <p><strong>Last name:</strong> {{ cook.last_name }}</p>
+  <p><strong>License number:</strong> {{ cook.years_of_experience }}</p>
+  <p><strong>Is staff:</strong> {{ cook.is_staff }}</p>
+
+{% endblock %}

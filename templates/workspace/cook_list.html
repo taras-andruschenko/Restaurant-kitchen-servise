@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% for cook in cook.objects.all %}
+    <ul>
+      <li>{{ cook.id }}{{ cook.username }}{{ cook.year_of_experience }}</li>
+    </ul>
+  {% endfor %}
+
+{% endblock %}
