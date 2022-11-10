@@ -30,3 +30,12 @@ class CookExperienceUpdateForm(forms.ModelForm):
     class Meta:
         model = get_user_model()
         fields = ["years_of_experience"]
+
+
+class CookSearchForm(forms.Form):
+    username = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by username..."})
+    )
