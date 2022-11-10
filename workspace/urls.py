@@ -14,7 +14,7 @@ from workspace.views import (
     IngredientListView,
     IngredientCreateView,
     IngredientUpdateView,
-    IngredientDeleteView,
+    IngredientDeleteView, CookListView, CookDetailView, CookCreateView, CookUpdateView, CookDeleteView,
 )
 
 urlpatterns = [
