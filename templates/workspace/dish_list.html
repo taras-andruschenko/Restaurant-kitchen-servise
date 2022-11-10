@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+  {% for dish in dish.objects.all %}
+    <ul>
+      <li>{{ dish.id }} - {{ dish }} - {{ dish.dish_types }}</li>
+    </ul>
+  {% endfor %}
+
+{% endblock %}
