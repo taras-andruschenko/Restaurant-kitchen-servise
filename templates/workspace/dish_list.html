@@ -2,6 +2,13 @@
 
 
 {% block content %}
+  <h1>Dishes</h1>
+
+  <form action="" method="get" class="form-inline">
+    {{ search_form.as_p }}
+    <input class="btn btn-secondary" type="submit" value="Find &#128270;">
+  </form>
+
   {% for dish in dish.objects.all %}
     <ul>
       <li>{{ dish.id }} - {{ dish }} - {{ dish.dish_types }}</li>
