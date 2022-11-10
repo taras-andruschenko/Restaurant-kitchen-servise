@@ -57,6 +57,7 @@ class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
 class DishListView(LoginRequiredMixin, generic.ListView):
     model = Dish
     queryset = Dish.objects.all().select_related("dish_types")
+    queryset = Dish.objects.all().prefetch_related("")
 
 
 class DishDetailView(LoginRequiredMixin, generic.DetailView):
@@ -99,3 +100,26 @@ class IngredientUpdateView(LoginRequiredMixin, generic.UpdateView):
 class IngredientDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Ingredient
     success_url = reverse_lazy("workspace:ingredient-list")
+
+
+class CookListView(LoginRequiredMixin, generic.ListView):
+    model = get_user_model()
+
+
+class CookDetailView(LoginRequiredMixin, generic.DetailView):
+    model = get_user_model()
+
+
+class CookCreateView(LoginRequiredMixin, generic.CreateView):
+    model = get_user_model()
+    success_url = reverse_lazy("workspace:cook-list")
+
+
+class CookUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = get_user_model()
+    success_url = reverse_lazy("workspace:cook-list")
+
+
+class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = get_user_model()
+    success_url = reverse_lazy("workspace:cook-list")
