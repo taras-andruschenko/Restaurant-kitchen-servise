@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
+from workspace.forms import DishForm
 from workspace.models import Dish, DishType, Ingredient
 
 
@@ -57,7 +58,6 @@ class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
 class DishListView(LoginRequiredMixin, generic.ListView):
     model = Dish
     queryset = Dish.objects.all().select_related("dish_types")
-    queryset = Dish.objects.all().prefetch_related("")
 
 
 class DishDetailView(LoginRequiredMixin, generic.DetailView):
@@ -66,11 +66,13 @@ class DishDetailView(LoginRequiredMixin, generic.DetailView):
 
 class DishCreateView(LoginRequiredMixin, generic.CreateView):
     model = Dish
+    form_class = DishForm
     success_url = reverse_lazy("workspace:dish-list")
 
 
 class DishUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Dish
+    form_class = DishForm
     success_url = reverse_lazy("workspace:dish-list")
 
 
