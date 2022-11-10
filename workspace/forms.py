@@ -24,3 +24,9 @@ class CookCreationForm(UserCreationForm):
             "last_name",
             "years_of_experience",
         )
+
+
+class CookExperienceUpdateForm(forms.ModelForm):
+    class Meta:
+        model = get_user_model()
+        fields = ["years_of_experience"]
