@@ -1373,6 +1373,7 @@ th {
 .table {
   width: 100%;
   margin-bottom: 20px;
+
 }
 .table > thead > tr > th,
 .table > tbody > tr > th,
@@ -1622,7 +1623,7 @@ output {
 }
 .form-control {
   display: block;
-  width: 100%;
+  width: 50%;
   height: 34px;
   padding: 6px 12px;
   font-size: 14px;
@@ -4620,7 +4621,7 @@ a.thumbnail.active {
   padding: 10px 15px;
   margin-bottom: -1px;
   background-color: #ffffff;
-  border: 0px solid #ffffff;
+  border: 2px solid #dddddd;
 }
 .list-group-item:first-child {
   border-top-right-radius: 4px;

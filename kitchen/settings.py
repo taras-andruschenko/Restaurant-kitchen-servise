@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'workspace',
 ]
 
@@ -104,6 +105,8 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTH_USER_MODEL = 'workspace.Cook'
 
 LOGIN_REDIRECT_URL = '/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 # Internationalization

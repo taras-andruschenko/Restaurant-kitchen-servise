@@ -772,8 +772,6 @@ border: 2px solid #fff;
 ---------------------------------*/
 
 .footer{
-	position: absolute;
-	bottom: 0;
 	background:url(../img/pw_maze_black_2X.png) left top repeat;
 	padding:35px 0 35px;
 }

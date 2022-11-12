@@ -114,7 +114,7 @@ urlpatterns = [
         "dishes/<int:pk>/toggle-assign/",
         toggle_assign_to_dish,
         name="toggle-dish-assign"
-    )
+    ),
 ]
 
 
