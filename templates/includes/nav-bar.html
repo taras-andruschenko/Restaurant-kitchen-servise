@@ -1,0 +1,21 @@
+
+	<nav class="main-nav-outer" id="test">
+		<div class="container">
+			<ul class="main-nav">
+        {% if user.is_authenticated %}
+          <li class="list-group-item">User: <a href="{{ user.get_absolute_url }}">{{ user.get_username }}</a>
+            <a href="{% url 'logout'%}?next={{request.path}}">Logout</a>
+        {% else %}
+          <li class="list-group-item"><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+        {% endif %}
+
+          <li><a href="{% url 'workspace:index' %}">Home</a></li>
+          <li><a href="{% url 'workspace:cook-list' %}">Cooks</a></li>
+          <li><a href="{% url 'workspace:dish-list' %}">Dishes</a></li>
+          <li><a href="{% url 'workspace:dish-type-list' %}">Dish types</a></li>
+          <li><a href="{% url 'workspace:ingredient-list' %}">Ingredients</a></li>
+			</ul>
+			<a class="res-nav_click" href="#"><i class="fa fa-bars"></i></a>
+		</div>
+	</nav>
+
