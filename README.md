@@ -4,7 +4,7 @@ Django project for managing dishes, cooks, dish types and ingredients in Restaur
 
 ## Check it out!
 
-[Restaurant project deployed to Render](PASTE LINK HERE)
+[Restaurant project deployed to Render](https://restaurant-kitchen-serv.onrender.com/)
 
 ## Installation
 
@@ -26,4 +26,4 @@ python manage.py runserver # starts Django Server
 
 ## Demo
 
-![Website Interface](C:\Users\ES-Taras\Desktop\Python\pyproject\pet-project\kitchen\kitchen.png)
+![Website Interface](kitchen.png)
