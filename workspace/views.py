@@ -11,7 +11,6 @@ from workspace.forms import DishForm, CookCreationForm, CookExperienceUpdateForm
 from workspace.models import Dish, DishType, Ingredient
 
 
-@login_required
 def index(request):
     """View function for the home page of the site."""
 
@@ -38,23 +37,30 @@ class DishTypeListView(LoginRequiredMixin, generic.ListView):
     model = DishType
     context_object_name = "dish_type_list"
     template_name = "workspace/dish_type_list.html"
+    paginate_by = 10
 
 
 class DishTypeCreateView(LoginRequiredMixin, generic.CreateView):
     model = DishType
     fields = "__all__"
     success_url = reverse_lazy("workspace:dish-type-list")
+    context_object_name = "dish_type_create"
+    template_name = "workspace/dish_type_form.html"
 
 
 class DishTypeUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = DishType
     fields = "__all__"
     success_url = reverse_lazy("workspace:dish-type-list")
+    context_object_name = "dish_type_update"
+    template_name = "workspace/dish_type_form.html"
 
 
 class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = DishType
     success_url = reverse_lazy("workspace:dish-type-list")
+    context_object_name = "dish_type_delete"
+    template_name = "workspace/dish_type_confirm_delete.html"
 
 
 class DishListView(LoginRequiredMixin, generic.ListView):
@@ -189,3 +195,15 @@ def toggle_assign_to_dish(request, pk):
     else:
         cook.dishes.add(pk)
     return HttpResponseRedirect(reverse_lazy("workspace:dish-detail", args=[pk]))
+
+
+@login_required
+def get_recipe(request, pk):
+    ingredients = Ingredient.objects.filter(
+        dishes=pk,
+    )
+    context = {
+        "ingredients": ingredients,
+    }
+
+    return render(request, "workspace/recipe.html", context=context)

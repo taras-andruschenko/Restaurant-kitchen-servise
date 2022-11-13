@@ -14,8 +14,14 @@ from workspace.views import (
     IngredientListView,
     IngredientCreateView,
     IngredientUpdateView,
-    IngredientDeleteView, CookListView, CookDetailView, CookCreateView, CookUpdateView, CookDeleteView,
+    IngredientDeleteView,
+    CookListView,
+    CookDetailView,
+    CookCreateView,
+    CookUpdateView,
+    CookDeleteView,
     toggle_assign_to_dish,
+    get_recipe,
 )
 
 urlpatterns = [
@@ -114,6 +120,11 @@ urlpatterns = [
         "dishes/<int:pk>/toggle-assign/",
         toggle_assign_to_dish,
         name="toggle-dish-assign"
+    ),
+    path(
+        "dishes/<int:pk>/recipe/",
+        get_recipe,
+        name="recipe"
     ),
 ]
 
