@@ -6,7 +6,8 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from workspace.forms import DishForm, CookCreationForm, CookExperienceUpdateForm, CookSearchForm, DishSearchForm
+from workspace.forms import DishForm, CookCreationForm, CookExperienceUpdateForm, CookSearchForm, DishSearchForm, \
+    IngredientForm
 from workspace.models import Dish, DishType, Ingredient
 
 
@@ -115,13 +116,13 @@ class IngredientListView(LoginRequiredMixin, generic.ListView):
 
 class IngredientCreateView(LoginRequiredMixin, generic.CreateView):
     model = Ingredient
-    fields = "__all__"
-    success_url = reverse_lazy("workspace:ingredient-list")
+    form_class = IngredientForm
+    success_url = reverse_lazy("workspace:ingredient-create")
 
 
 class IngredientUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Ingredient
-    fields = "__all__"
+    form_class = IngredientForm
     success_url = reverse_lazy("workspace:ingredient-list")
 
 

@@ -1,5 +1,33 @@
 {% extends "base.html" %}
+{% load crispy_forms_filters %}
 
 {% block content %}
-  Dish type list
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <h1>
+      Dish Types
+      <a href="{% url 'workspace:dish-type-create' %}" class="btn btn-primary link-to-page">
+        Create
+      </a>
+    </h1>
+    <br>
+      {% if dish_type_list %}
+      <table class="table">
+        <tr>
+          <th>ID</th>
+          <th>Dish Type</th>
+        </tr>
+      {% for dish_type in dish_type_list %}
+        <tr>
+          <td>{{ dish_type.id }}</td>
+          <td>{{ dish_type.name }}</td>
+        </tr>
+      {% endfor %}
+
+      </table>
+      {% else %}
+        <p>There are no dish types in the service.</p>
+      {% endif %}
+  </div>
+  <div class="col-sm-2"></div>
 {% endblock %}

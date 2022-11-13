@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 
-from workspace.models import Dish
+from workspace.models import Dish, Ingredient
 
 
 class DishForm(forms.ModelForm):
@@ -48,3 +48,10 @@ class DishSearchForm(forms.Form):
         label="",
         widget=forms.TextInput(attrs={"placeholder": "Search by name..."})
     )
+
+
+class IngredientForm(forms.ModelForm):
+
+    class Meta:
+        model = Ingredient
+        fields = "__all__"
