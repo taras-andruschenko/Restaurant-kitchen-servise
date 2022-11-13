@@ -26,4 +26,4 @@ python manage.py runserver # starts Django Server
 
 ## Demo
 
-![Website Interface](kitchen.png)
+![Website Interface](C:\Users\ES-Taras\Desktop\Python\pyproject\pet-project\kitchen\kitchen.png)
