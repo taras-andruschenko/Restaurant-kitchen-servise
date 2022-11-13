@@ -1,7 +1,11 @@
-
 	<nav class="main-nav-outer" id="test">
-		<div class="container">
 			<ul class="main-nav">
+        {% if num_visits > 0 %}
+          <li>
+            You have visited this site
+              {{ num_visits }} time{{ num_visits|pluralize }}.
+          </li>
+        {% endif %}
         {% if user.is_authenticated %}
           <li class="list-group-item">User: <a href="{{ user.get_absolute_url }}">{{ user.get_username }}</a>
             <a href="{% url 'logout'%}?next={{request.path}}">Logout</a>
@@ -14,8 +18,8 @@
           <li><a href="{% url 'workspace:dish-list' %}">Dishes</a></li>
           <li><a href="{% url 'workspace:dish-type-list' %}">Dish types</a></li>
           <li><a href="{% url 'workspace:ingredient-list' %}">Ingredients</a></li>
+
 			</ul>
 			<a class="res-nav_click" href="#"><i class="fa fa-bars"></i></a>
 		</div>
 	</nav>
-
