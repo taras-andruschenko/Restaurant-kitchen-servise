@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <h1>
+      Dish Types
+      <a href="{% url 'workspace:dish-type-create' %}" class="btn btn-primary link-to-page">
+        Create
+      </a>
+    </h1>
+    <br>
+      {% if dish_type_list %}
+      <table class="table">
+        <tr>
+          <th>ID</th>
+          <th>Dish Type</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+      {% for dish_type in dish_type_list %}
+        <tr>
+          <td>{{ dish_type.id }}</td>
+          <td>{{ dish_type.name }}</td>
+          <td>
+            <a href="{% url 'workspace:dish-type-update' pk=dish_type.id %}">
+              Update
+            </a>
+          </td>
+          <td>
+            <a style="color: red"
+               href="{% url 'workspace:dish-type-delete' pk=dish_type.id %}">
+              Delete
+            </a>
+          </td>
+        </tr>
+      {% endfor %}
+
+      </table>
+      {% else %}
+        <p>There are no dish types in the service.</p>
+      {% endif %}
+  </div>
+  <div class="col-sm-2"></div>
+{% endblock %}

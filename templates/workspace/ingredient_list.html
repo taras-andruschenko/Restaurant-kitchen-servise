@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <h1>
+      Ingredients
+      <a href="{% url 'workspace:ingredient-create' %}" class="btn btn-primary link-to-page">
+        Create
+      </a>
+    </h1>
+    <br>
+      {% if ingredient_list %}
+      <table class="table">
+        <tr>
+          <th>ID</th>
+          <th>Ingredient</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+      {% for ingredient in ingredient_list %}
+        <tr>
+          <td>{{ ingredient.id }}</td>
+          <td>{{ ingredient.name }}</td>
+          <td>
+            <a href="{% url 'workspace:ingredient-update' pk=ingredient.id %}">
+              Update
+            </a>
+          </td>
+          <td>
+            <a style="color: red"
+               href="{% url 'workspace:ingredient-delete' pk=ingredient.id %}">
+              Delete
+            </a>
+          </td>
+        </tr>
+      {% endfor %}
+
+      </table>
+      {% else %}
+        <p>There are no ingredients in the service.</p>
+      {% endif %}
+  </div>
+  <div class="col-sm-2"></div>
+{% endblock %}

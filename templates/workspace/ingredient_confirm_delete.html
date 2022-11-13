@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="col-sm-5"></div>
+  <div class="col-sm-7">
+    <h1>Delete ingredient?</h1>
+    <form action="" method="post">
+      {% csrf_token %}
+
+      <input type="submit" value="Yes, delete it!" class="btn btn-danger">
+      <a href="{% url 'workspace:ingredient-list' %}" class="btn btn-primary">Cancel</a>
+    </form>
+  </div>
+
+{% endblock %}

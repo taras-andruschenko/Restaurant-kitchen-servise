@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <section class="main-section alabaster">
+		<div class="container">
+			<div class="row">
+				<figure class="col-lg-5 col-sm-4 wow fadeInLeft">
+					<img src="{% static 'img/start-page-chef.png' %}" alt="">
+				</figure>
+				<div class="col-lg-7 col-sm-8 featured-work">
+					<h2>Welcome to Best Kitchen Ever!</h2>
+					<h4 class="padding-b">The Kitchen service has the following record counts:</h4>
+          <hr>
+					<div class="featured-box">
+						<div class="featured-box-col2 wow fadeInRight delay-02s">
+              <h3>dishes: {{ num_dishes }}</h3>
+							<p>The dishes of our restaurant will be able to satisfy even Michelin inspectors </p>
+						</div>
+					</div>
+          <hr>
+					<div class="featured-box">
+						<div class="featured-box-col2 wow fadeInRight delay-04s">
+							<h3>cooks: {{ num_cooks }}</h3>
+							<p>The chef of our restaurant has 5 Michelin stars. All other cooks are inspired by the chef and create masterpieces in the kitchen! </p>
+						</div>
+					</div>
+          <hr>
+					<div class="featured-box">
+						<div class="featured-box-col2 wow fadeInRight delay-06s">
+							<h3>dish types: {{ num_dish_types }}</h3>
+							<p>In our restaurant you can find more than {{ num_dish_types }} types of dishes</p>
+						</div>
+					</div>
+          <hr>
+          <div class="featured-box">
+						<div class="featured-box-col2 wow fadeInRight delay-06s">
+							<h3>ingredients: {{ num_ingredients }}</h3>
+							<p>Our chef personally selects more than {{ num_ingredients }} types of products for the kitchen</p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

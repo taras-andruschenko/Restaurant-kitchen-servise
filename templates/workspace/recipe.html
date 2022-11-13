@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <h1>
+        {{ dish.name }}
+      </h1>
+
+      <hr>
+
+      <h3>
+        Ingredients:
+      </h3>
+
+      <table class="table">
+        <tr>
+          <th>ID</th>
+          <th>Ingredient</th>
+        </tr>
+        {% for ingredient in ingredients.all %}
+          <tr>
+            <td>{{ ingredient.id }}</td>
+            <td>{{ ingredient.name }}</td>
+          </tr>
+        {% endfor %}
+
+      </table>
+      <a href="{% url 'workspace:dish-list' %}" class="btn btn-primary">Back</a>
+    </div>
+  <div class="col-sm-2"></div>
+{% endblock %}

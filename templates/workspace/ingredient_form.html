@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <h1>{{ object|yesno:"Update,Create" }} ingredient</h1>
+      <form action="" method="post" novalidate>
+        {% csrf_token %}
+        {{ form|crispy}}
+
+        <input type="submit" value="Submit" class="btn btn-primary">
+        <a href="{% url 'workspace:ingredient-list' %}" class="btn btn-primary">Back</a>
+      </form>
+
+    </div>
+  <div class="col-sm-2"></div>
+{% endblock %}
