@@ -13,7 +13,7 @@
 
     <form action="" method="get" class="form-inline">
       {{ search_form|crispy }}
-      <input class="btn btn-secondary" type="submit" value="Find &#128270;">
+      <input class="btn btn-primary" type="submit" value="Search &#128270;">
     </form>
 
     <br>
@@ -22,17 +22,23 @@
         <tr>
           <th>ID</th>
           <th>Dish</th>
+          <th>Recipe</th>
           <th>Dish Type</th>
           <th>Price</th>
+
           <th>Description</th>
+
         </tr>
       {% for dish in dish_list %}
         <tr>
           <td>{{ dish.id }}</td>
-          <td><a href="#">{{ dish.name }}</a></td>
+          <td><a href="{% url 'workspace:dish-detail' pk=dish.pk %}">{{ dish.name }}</a></td>
+          <td><a href="{% url 'workspace:recipe' pk=dish.pk%}">recipe</a></td>
           <td>{{ dish.dish_types }}</td>
           <td>{{ dish.price }}</td>
+
           <td>{{ dish.description }}</td>
+
         </tr>
       {% endfor %}
 

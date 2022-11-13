@@ -1,40 +1,58 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>
-    {{ dish.name }}
-    <a href="{% url 'workspace:dish-delete' pk=dish.id %}" class="btn btn-danger link-to-page">
-      Delete
-    </a>
+  <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <h1>
+        {{ dish.name }}
+        <a href="{% url 'workspace:dish-delete' pk=dish.id %}" class="btn btn-danger link-to-page">
+          Delete
+        </a>
 
-    <a href="{% url 'workspace:dish-update' pk=dish.id %}" class="btn btn-secondary link-to-page">
-      Update
-    </a>
-  </h1>
+        <a href="{% url 'workspace:dish-update' pk=dish.id %}" class="btn btn-primary link-to-page">
+          Update
+        </a>
+      </h1>
 
-  <p>Dish type: {{ dish.dish_types.name }}</p>
+      <p>Dish type: {{ dish.dish_types.name }}</p>
 
-  <hr>
+      <hr>
 
-  <h3>
-    Cooks:
+      <h3>
+        Cooks:
 
-    {% if cook in dish.cooks.all %}
-      <a href="{% url 'workspace:toggle-dish-assign' pk=dish.id %}" class="btn btn-danger link-to-page">
-        I can't сook this dish
-      </a>
-    {% else %}
-      <a href="{% url 'workspace:toggle-dish-assign' pk=dish.id %}" class="btn btn-success link-to-page">
-        I can cook this!
-      </a>
-    {% endif %}
+        {% if dish in user.dishes.all %}
+          <a href="{% url 'workspace:toggle-dish-assign' pk=dish.id %}" class="btn btn-danger link-to-page">
+            I can't сook this dish
+          </a>
+        {% else %}
+          <a href="{% url 'workspace:toggle-dish-assign' pk=dish.id %}" class="btn btn-success link-to-page">
+            I can cook this!
+          </a>
+        {% endif %}
 
-  </h3>
+      </h3>
 
-  <ul>
-    {% for cook in dish.cooks.all %}
-      <li>{{ cook.username }} ({{ cook.first_name }} {{ cook.last_name }})</li>
-    {% endfor %}
-  </ul>
+      <table class="table">
+        <tr>
+          <th>ID</th>
+          <th>Username</th>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Years of experience</th>
+        </tr>
+        {% for cook in dish.cooks.all %}
+          <tr>
+            <td>{{ cook.id }}</td>
+            <td><a href="{{ cook.get_absolute_url }}">{{ cook.username }}</a></td>
+            <td>{{ cook.first_name }}</td>
+            <td>{{ cook.last_name }}</td>
+            <td>{{ cook.years_of_experience }}</td>
+          </tr>
+        {% endfor %}
 
+      </table>
+      <a href="{% url 'workspace:dish-list' %}" class="btn btn-primary">Back</a>
+    </div>
+  <div class="col-sm-2"></div>
 {% endblock %}
