@@ -6,6 +6,11 @@ Django project for managing dishes, cooks, dish types and ingredients in Restaur
 
 [Restaurant project deployed to Render](https://restaurant-kitchen-serv.onrender.com/)
 
+## Test user:
+
+Username: user
+Password: user12345
+
 ## Installation
 
 Python 3 must be already installed
